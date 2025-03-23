@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boldonse&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos da tela de introdução */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0D0D0D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.intro-loader {
+    width: 200px; /* Largura da barra de progresso */
+    height: 4px; /* Altura da barra de progresso */
+    background: rgba(255, 255, 255, 0.3); /* Cor de fundo da barra */
+    border-radius: 2px; /* Bordas arredondadas */
+    margin: 20px auto;
+    overflow: hidden; /* Esconde o conteúdo que ultrapassa a barra */
+    opacity: 0; /* Inicia invisível */
+    transition: opacity 1.0s ease-in-out;
+}
+
+.intro-loader::before {
+    content: '';
+    display: block;
+    width: 0%; /* Inicia em 0% */
+    height: 100%;
+    background: #00FF7F; /* Cor da barra de progresso */
+    animation: loadProgress 6s linear forwards; /* Animação de 0% a 100% */
+}
+
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #00FF7F;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.intro-subtext {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+/* Estilos do conteúdo principal */
+.main-content {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0D0D0D;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: moveGrid 10s linear infinite;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 100px;
+}
+
+@keyframes moveGrid {
+    from { background-position: 0 0; }
+    to { background-position: 40px 40px; }
+}
+
+.logo {
+    font-size: 5em;
+    font-weight: 700;
+    color: #00FF7F;
+    margin-bottom: 40px;
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.container {
+    max-width: 500px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 255, 127, 0.5);
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 900;
+    color: #00FF7F;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.0em;
+    font-weight: 900;
+}
+
+.countdown {
+    font-size: 1.6em;
+    margin-top: 7px;
+    font-weight: 400;
+}
+
+.countdown span {
+    display: inline-block;
+    min-width: 30px;
+}
+
+.social-icons {
+    position: fixed;
+    bottom: -150px; /* Posicionado na parte inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 255, 127, 0.3);
+    z-index: 100;
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    color: #00FF7F;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.social-icons a.whatsapp {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+footer {
+    position: fixed;
+    bottom: -300px; /* Posicionado acima dos ícones */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9em;
+    color: #fff;
+    z-index: 100;
+}
+
+footer a {
+    color: #00FF7F;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+.loader {
+    display: none;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #00FF7F;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 3em; /* Título menor em dispositivos móveis */
+        margin-bottom: 90px;
+    }
+
+    h1 {
+        font-size: 1.5em; /* Título menor em dispositivos móveis */
+    }
+
+    p {
+        font-size: 0.6em; /* Texto menor em dispositivos móveis */
+    }
+
+    .countdown {
+        font-size: 0.8em; /* Contador menor em dispositivos móveis */
+    }
+
+    .container {
+        width: 95%; /* Caixa mais estreita em dispositivos móveis */
+        padding: 7px;
+        margin-top: 10px; /* Menos margem no topo */
+        margin-left: 10px;
+    }
+
+    .social-icons {
+        padding: 8px 16px; /* Ícones menores em dispositivos móveis */
+        bottom: -80px; /* Ajuste para dispositivos móveis */
+        gap: 15px; /* Menos espaço entre os ícones */
+    }
+
+    .social-icons a {
+        font-size: 1.2em; /* Ícones menores em dispositivos móveis */
+    }
+
+    footer {
+        font-size: 0.7em; /* Rodapé menor em dispositivos móveis */
+        bottom: -300px; /* Ajuste para dispositivos móveis */
+    }
+}
